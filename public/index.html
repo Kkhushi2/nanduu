@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -16,9 +18,6 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -31,6 +30,76 @@
     <title>React App</title>
   </head>
   <body>
+    <style>
+     html{
+        scroll-behavior: smooth;
+        background-color: white;
+      }
+      body{
+         margin: 0;
+         padding: 0;
+         background-color: white;
+        
+      }
+      h1{
+        font-size: 50px;
+        color:#fff;
+      }
+      #content-block {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .parallax-slide {
+        position: relative;
+        height: 100vh;
+      }
+
+      .parallax-clip {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        /*clip: rect(auto, auto, auto, auto);*/
+      }
+
+      .fixed-parallax {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-size: cover;
+        background-position: center ;
+        background-attachment: fixed;
+        /* -webkit-transform: translateZ(0); /* necessary for iOS! */
+      }
+
+      /* used only as overlay for the images,
+   darkens it a little in this case */
+      .fixed-parallax:before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+       
+        content: "";
+      }
+
+      /* CSS specific to iOS devices */
+      @supports (-webkit-overflow-scrolling: touch) {
+        .parallax-clip {
+          clip: rect(auto, auto, auto, auto);
+        }
+        .fixed-parallax {
+          position: fixed;
+          background-attachment: unset;
+          -webkit-transform: translateZ(0); /* necessary for iOS! */
+        }
+      }
+    </style>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -43,5 +112,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      const menuBtn = document.querySelector('.menu-btn');
+let menuOpen = false;
+menuBtn.addEventListener('click', () => {
+  if(!menuOpen) {
+    menuBtn.classList.add('open');
+    menuOpen = true;
+  } else {
+    menuBtn.classList.remove('open');
+    menuOpen = false;
+  }
+});
+    </script>
   </body>
+  
+
 </html>
