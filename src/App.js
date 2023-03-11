@@ -4,7 +4,7 @@ import './App.css';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Footer } from './components/Footer';
-import Contactus from './components/Contactus';
+import Contact from './components/Contact';
 import WWS from './components/WWS';
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
             </div>
           </div>
           <div id="contact">
-          <Contactus/>
+          <Contact/>
           </div>
          
          
