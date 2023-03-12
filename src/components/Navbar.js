@@ -1,43 +1,99 @@
-import React, { useState } from 'react'
+import { Opacity } from '@mui/icons-material';
+import React, { useEffect, useState } from 'react'
+import Contactasset from './Contactasset';
 
 
 export const Navbar = () => {
-    const [show, setshow] = useState("0")
-    const [a, seta] = useState(false)
+  const[shownav,setShownav]=useState('white');
+  const[Opacity,setopacity]=useState("0")
+  const handleShow=()=>{
+       if(window.scrollY>50){
+           setShownav("white")
+       }
 
-    const handleShowTrue = () => {
-        setshow("2/12")
-        seta(!a)
+       else{
+           setShownav("white")
+       }
+  }
+  useEffect(()=>{
+    window.addEventListener('scroll',handleShow)
+  },[])
+    const [show,setshow]=useState("0")
+    const[a,seta]=useState(false)
+    const handleShowTrue=()=>{
+      setshow("2/12")
+      seta(!a)
     }
-    const handleShowFalse = () => {
-        setshow("0")
-        seta(!a)
+    const handleShowFalse=()=>{
+      setshow("0")
+      seta(!a)
     }
-    return (
-        <>
-            <div className="fixed left-0 top-0 z-50 py-1 px-2 bg-sky-200 h-screen">
-                <img src='https://cdn-icons-png.flaticon.com/512/2516/2516745.png' className='w-8 h-8 ' onMouseEnter={handleShowTrue}  />
-            </div>
-            <div className={`fixed left-0 h-screen  bg-white-100 w-${show}  transition-all transition-slowest ease duration-500 ease-in-out z-50 `} onMouseLeave={handleShowFalse}>
-                <div className='flex justify-end'>
+    const[showContact,setshowContact]=useState(false)
+    const handleNav=()=>{
+       if(Opacity=="0"){
+        setshowContact(!showContact)
+        setopacity("100")
+        
+       }
+       else{
+        setshowContact(!showContact)
+        setopacity("0")
+     
+       }
+         
+        
+       
+    }
+  return (
+    <>
+    <div className={`fixed top-0 z-50 bg-${shownav}`} >
+    <div className="py-3 px-2 bg-transparent w-screen flex ">
+      <div className='w-6/12 px-10'>
+          <img src="logoo.png" width={300} className="fixed -top-[70px]"/>
+      </div>
+      <div className='w-6/12 flex gap-10   justify-start px-4 font-semibold  text-2xl py-4 text-[#2B5DA2]' >
+             <p className='hover:border-b-2 border-[#2B5DA2]  px-3 cursor-pointer' >
+               Home
+             </p>
+             <p className='hover:border-b-2 border-[#2B5DA2]  px-3 cursor-pointer' onMouseEnter={()=>{setshowContact(false)}}>
+               About
+             </p >
+             <p className='hover:border-b-2 border-[#2B5DA2]  px-3 cursor-pointer' onMouseEnter={()=>{setshowContact(false)}}>
+              Products
+             </p>
+             <div>
+              <p className='hover:border-b-2 border-[#2B5DA2] px-3 cursor-pointer ' onMouseEnter={()=>{setshowContact(true)}}  onClick={()=>{setshowContact(false)}} >
+               <a href="#contact" >Contact Us</a>
+              </p>
+           
+             </div>
+      </div>
+      
+      </div>
+      {
+        showContact? <div className='h-[60vh]  flex shadow-lg' onMouseEnter={()=>{setshowContact(true)}}  onMouseLeave={()=>{setshowContact(false)}}>
+        <div className='w-8/12   bg-white py-4 px-7 text-[#2B5DA2]'> <p className={`text-4xl font-bold  transition-all ease-in-out delay-150 `}>Let's Connect with us</p>
+        <p>Lets talk,send us a message and we will reach <br/> 
+within one work day</p>
+<div className='flex flex-wrap mt-10'>
+    <div className='w-6/12 items-center py-8'><Contactasset  image={"https://cdn-icons-png.flaticon.com/512/126/126341.png"} data1={"Phone"} data2={"+918770100421"}/></div>
+    <div className='w-6/12 items-center py-8'><Contactasset  image={"https://cdn-icons-png.flaticon.com/512/3059/3059486.png"} data1={"Email"} data2={"+918770100421"}/></div>
+    <div className='w-6/12 items-center py-8'><Contactasset image={"https://cdn-icons-png.flaticon.com/512/3179/3179068.png"} data1={"Address"} data2={"+918770100421"}/></div>
+</div>
 
-                    <img src='https://cdn-icons-png.flaticon.com/512/3018/3018465.png' className='w-14 h-14 ' onClick={handleShowFalse}  />
-                </div>
-                <div className={a ? "w-full flex flex-col gap-3  pt-10 pl-10 text-gray-500 " : "hidden"}>
-
-                    <a href='#home' onClick={handleShowFalse}> <p className='hover:text-gray-900 cursor-pointer hover:text-xl transition-all duration-150 ease-in-out'>Home</p></a>
-                    <a href='#about' onClick={handleShowFalse}>  <p className='hover:text-gray-900 cursor-pointer hover:text-xl transition-all duration-150 ease-in-out'>About</p></a>
-                    <a href='#wws' onClick={handleShowFalse}> <p className='hover:text-gray-900 cursor-pointer hover:text-xl transition-all duration-150 ease-in-out'>Whom We Serve</p></a>
-                    <a href='#contact' onClick={handleShowFalse}> <p className='hover:text-gray-900 cursor-pointer hover:text-xl transition-all duration-150 ease-in-out'>Contact Us</p></a>
 
 
-                </div>
-                <div>
-
-                </div>
-            </div>
-
-        </>
-
-    )
+</div>
+        <div className='bg-[#759FD8] w-4/12  '> <img src='https://www.iqvia.com/-/media/iqvia/images/navigation/website-featured_jpg-2213_cheerful-young-colleagues-using-laptop.jpg?h=683&w=1024&hash=D776A849F30494AB90F889BBB8F30041' className='w-full h-full object-cover'/></div>
+    </div>:<></>
+      }
+     
+    <div>
+        
+    </div>
+  </div>
+  
+  </>
+  
+  )
 }
