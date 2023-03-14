@@ -1,0 +1,10 @@
+.down{
+     height: 3px;
+     background-color: #2B5DA2;
+     width: 0px;
+     animation: grow 1s normal forwards;
+}
+@keyframes grow{
+    from {width: 0px;}
+    to {width: 100%;}
+}

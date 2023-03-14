@@ -2,7 +2,7 @@ import { Opacity } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react'
 import Contactasset from './Contactasset';
 
-
+import './Navbar.css'
 export const Navbar = () => {
   const[shownav,setShownav]=useState('white');
   const[Opacity,setopacity]=useState("0")
@@ -62,9 +62,12 @@ export const Navbar = () => {
               Products
              </p>
              <div>
-              <p className='hover:border-b-2 border-[#2B5DA2] px-3 cursor-pointer ' onMouseEnter={()=>{setshowContact(true)}}  onClick={()=>{setshowContact(false)}} >
+              <div>
+              <p className=' px-3 cursor-pointer ' onMouseEnter={()=>{setshowContact(true)}}  onClick={()=>{setshowContact(false)}} >
                <a href="#contact" >Contact Us</a>
               </p>
+              <div className={showContact?"down":""}></div>
+              </div>
            
              </div>
       </div>
